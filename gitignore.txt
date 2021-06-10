@@ -51,7 +51,7 @@ SourceArt/**/*.png
 SourceArt/**/*.tga
 
 # Contents
-ArenaBattle/Contents/*
+ArenaBattle/Content/*
 ArenaBattle/Intermediate/*
 
 # Binary Files
