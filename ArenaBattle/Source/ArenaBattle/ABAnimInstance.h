@@ -25,6 +25,7 @@ public:
 
 	void PlayAttackMontage();
 	void JumpToAttackMontageSection(int32 NewSection);
+	void SetDeadAnim() { IsDead = true; }
 
 	FOnNextAttackCheckDelegate OnNextAttackCheck;
 	FOnAttackHitCheckDelegate OnAttackHitCheck;
@@ -39,6 +40,8 @@ protected:
 		float CurrentPawnSpeed;
 	UPROPERTY(EditAnyWhere, BlueprintReadOnly, Category = Pawn, Meta = (AllowPrivateAcess = true))
 		bool IsInAir;
+	UPROPERTY(EditAnyWhere, BlueprintReadOnly, Category = Pawn, Meta = (AllowPrivateAcess = true))
+		bool IsDead;
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = Attack, Meta = (AllowPrivateAcess = true))
 		UAnimMontage* AttackMontage;

@@ -46,12 +46,24 @@ public:
 	virtual void PostInitializeComponents() override;
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
 
+	bool CanSetWeapon();
+	void SetWeapon(class AABWeapon* NewWeapon);
+
 
 	UPROPERTY(VisibleAnyWhere, Category = Camera)
 		USpringArmComponent* SpringArm;
 
 	UPROPERTY(VisibleAnyWhere, Category = Camera)
 		UCameraComponent* Camera;
+
+	UPROPERTY(VisibleAnyWhere, Category = Weapon)
+		USkeletalMeshComponent* Weapon;
+
+	UPROPERTY(VisibleAnyWhere, Category = Weapon)
+		class AABWeapon* CurrentWeapon;
+
+	UPROPERTY(VisibleAnyWhere, Category = Stat)
+		class UABCharacterStatComponent* CharacterStat;
 
 private:
 	void UpDown(float NewAxisValue);
