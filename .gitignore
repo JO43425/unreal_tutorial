@@ -6,6 +6,21 @@
 # Visual Studio 2015 user specific files
 .vs/
 
+# Jo Added
+*.uasset
+*.pdb
+*.log
+*.umap
+*.response
+*.exp
+*.ini
+*.dmp
+ArenaBattle/Saved/*
+ArenaBattle/Content/*
+ArenaBattle/Binaries/*
+ArenaBattle/Config/*
+ArenaBattle/Intermediate/*
+
 # Compiled Object files
 *.slo
 *.lo
