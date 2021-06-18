@@ -65,6 +65,9 @@ public:
 	UPROPERTY(VisibleAnyWhere, Category = Stat)
 		class UABCharacterStatComponent* CharacterStat;
 
+	UPROPERTY(VisibleAnyWhere, Category = UI)
+		class UWidgetComponent* HPBarWidget;
+
 private:
 	void UpDown(float NewAxisValue);
 	void LeftRight(float NewAxisValue);
