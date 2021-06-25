@@ -21,6 +21,7 @@ protected:
 	{
 		GTA,
 		DIABLO,
+		NPC,
 		END,
 	};
 
@@ -28,7 +29,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	void SetContorlMode(EControlMode eControlMode);
+	void SetControlMode(EControlMode eControlMode);
 	EControlMode CurrentControlMode = EControlMode::GTA;
 	FVector DirectionToMove = FVector::ZeroVector;
 
@@ -45,6 +46,7 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	virtual void PostInitializeComponents() override;
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
+	virtual void PossessedBy(AController* NewController) override;
 
 	bool CanSetWeapon();
 	void SetWeapon(class AABWeapon* NewWeapon);

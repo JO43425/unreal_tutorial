@@ -46,7 +46,7 @@ AABCharacter::AABCharacter() :
 
 	GetCharacterMovement()->JumpZVelocity = 800.0f;
 
-	SetContorlMode(EControlMode::DIABLO);
+	SetControlMode(EControlMode::DIABLO);
 	MaxCombo = 4;
 	AttackEndComboState();
 
@@ -86,7 +86,7 @@ void AABCharacter::BeginPlay()
 	
 }
 
-void AABCharacter::SetContorlMode(EControlMode eControlMode)
+void AABCharacter::SetControlMode(EControlMode eControlMode)
 {
 	CurrentControlMode = eControlMode;
 	if (eControlMode == EControlMode::GTA)
@@ -119,6 +119,13 @@ void AABCharacter::SetContorlMode(EControlMode eControlMode)
 		GetCharacterMovement()->bOrientRotationToMovement = false;
 		GetCharacterMovement()->bUseControllerDesiredRotation = true;
 		GetCharacterMovement()->RotationRate = FRotator(0.0f, 720.0f, 0.0f);
+	}
+	else if (eControlMode == EControlMode::NPC)
+	{
+		bUseControllerRotationYaw = false;
+		GetCharacterMovement()->bUseControllerDesiredRotation = false;
+		GetCharacterMovement()->bOrientRotationToMovement = true;
+		GetCharacterMovement()->RotationRate = FRotator(0.0f, 400.0f, 0.0f);
 	}
 }
 
@@ -209,6 +216,22 @@ float AABCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEve
 
 	CharacterStat->SetDamage(FinalDamage);
 	return FinalDamage;
+}
+
+void AABCharacter::PossessedBy(AController * NewController)
+{
+	Super::PossessedBy(NewController);
+
+	if (IsPlayerControlled())
+	{
+		SetControlMode(EControlMode::DIABLO);
+		GetCharacterMovement()->MaxWalkSpeed = 600.0f;
+	}
+	else
+	{
+		SetControlMode(EControlMode:: NPC);
+		GetCharacterMovement()->MaxWalkSpeed = 300.0f;
+	}
 }
 
 bool AABCharacter::CanSetWeapon()
@@ -309,7 +332,7 @@ void AABCharacter::ViewChange()
 	}
 
 	uint32 mode = ((uint32)CurrentControlMode + 1) >= (uint32)EControlMode::END ? 0 : (uint32)CurrentControlMode + 1;
-	SetContorlMode((EControlMode)mode);
+	SetControlMode((EControlMode)mode);
 }
 
 void AABCharacter::Attack()

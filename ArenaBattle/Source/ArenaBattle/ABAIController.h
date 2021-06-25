@@ -19,10 +19,20 @@ class ARENABATTLE_API AABAIController : public AAIController
 public:
 	AABAIController();
 	virtual void Possess(APawn* InPawn) override;
-	virtual void UnPossess() override;
+	//virtual void UnPossess() override;
+
+	static const FName HomePosKey;
+	static const FName PatrolPosKey;
+	static const FName TargetKey;
 
 private:
+	UPROPERTY()
+		class UBehaviorTree* BTAsset;
+	UPROPERTY()
+		class UBlackboardData* BBAsset;
+	/*
 	void OnRepeatTimer();
 	FTimerHandle RepeatTimerHandle;
-	float RepeatInterval;	
+	float RepeatInterval;
+	*/
 };
