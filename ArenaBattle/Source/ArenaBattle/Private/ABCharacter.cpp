@@ -406,4 +406,6 @@ void AABCharacter::OnAttackMontageEnded(UAnimMontage * Montage, bool bInterrupte
 	ABCHECK(CurrentCombo > 0);
 	IsAttacking = false;
 	AttackEndComboState();
+	//델리게이트 전달
+	OnAttackEnd.Broadcast();
 }

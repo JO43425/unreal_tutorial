@@ -7,6 +7,8 @@
 #include "GameFramework/Character.h"
 #include "ABCharacter.generated.h"
 
+DECLARE_MULTICAST_DELEGATE(FOnAttackEndDelegate);
+
 UCLASS()
 class ARENABATTLE_API AABCharacter : public ACharacter
 {
@@ -49,8 +51,10 @@ public:
 	virtual void PossessedBy(AController* NewController) override;
 
 	bool CanSetWeapon();
+	void Attack();
 	void SetWeapon(class AABWeapon* NewWeapon);
 
+	FOnAttackEndDelegate OnAttackEnd;
 
 	UPROPERTY(VisibleAnyWhere, Category = Camera)
 		USpringArmComponent* SpringArm;
@@ -75,8 +79,7 @@ private:
 	void LeftRight(float NewAxisValue);
 	void Turn(float NewAxisValue);
 	void LookUp(float NewAxisValue);
-	void ViewChange();
-	void Attack();
+	void ViewChange();	
 	void AttackStartComboState();
 	void AttackEndComboState();
 	void AttackCheck();
