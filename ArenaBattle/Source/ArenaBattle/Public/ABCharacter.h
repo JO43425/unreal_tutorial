@@ -53,6 +53,7 @@ public:
 	bool CanSetWeapon();
 	void Attack();
 	void SetWeapon(class AABWeapon* NewWeapon);
+	bool IsDead();
 
 	FOnAttackEndDelegate OnAttackEnd;
 
@@ -83,6 +84,7 @@ private:
 	void AttackStartComboState();
 	void AttackEndComboState();
 	void AttackCheck();
+	void OnAssetLoadCompleted();
 	
 	UFUNCTION()
 	void OnAttackMontageEnded(UAnimMontage* Montage, bool bInterrupted);
@@ -105,4 +107,7 @@ protected:
 
 	UPROPERTY()
 		class UABAnimInstance* ABAnim;
+
+	FSoftObjectPath CharacterAssetToLoad = FSoftObjectPath(nullptr);
+	TSharedPtr<struct FStreamableHandle> AssetStreamingHandle;
 };
