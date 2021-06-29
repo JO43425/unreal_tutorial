@@ -17,9 +17,12 @@ class ARENABATTLE_API AABCharacter : public ACharacter
 public:
 	// Sets default values for this character's properties
 	AABCharacter();
+
 	void SetCharacterState(ECharacterState NewState);
 	ECharacterState GetCharacterState() const;
 	int32 GetExp() const;
+	float GetFinalAttackRange() const;
+	float GetFinalAttackDamage() const;
 
 protected:
 	enum class EControlMode
