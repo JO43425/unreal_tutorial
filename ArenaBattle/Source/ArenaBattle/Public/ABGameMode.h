@@ -19,6 +19,10 @@ class ARENABATTLE_API AABGameMode : public AGameModeBase
 public:
 	AABGameMode();
 
+	virtual void PostInitializeComponents() override;
 	virtual void PostLogin(APlayerController* NewPlayer) override;
-	
+	void AddScore(class AABPlayerController * ScoredPlayer);
+private:
+	UPROPERTY()
+		class AABGameStateBase* ABGameState;
 };

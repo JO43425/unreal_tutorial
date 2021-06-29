@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "ArenaBattle.h"
 #include "CoreMinimal.h"
 #include "GameFramework/GameStateBase.h"
 #include "ABGameStateBase.generated.h"
@@ -14,7 +15,14 @@ class ARENABATTLE_API AABGameStateBase : public AGameStateBase
 {
 	GENERATED_BODY()
 	
-	
-	
-	
+public:
+	AABGameStateBase();
+
+public:
+	int32 GetTotalGameScore() const;
+	void AddGameScore();
+
+private:
+	UPROPERTY(Transient)
+		int32 TotalGameScore;	
 };
