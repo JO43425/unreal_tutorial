@@ -21,3 +21,25 @@
 13. 게임플레이 제작 ( 케릭터 스테이트, 플레이어 데이터를 UI로 연동, 게임 데이터 관리 )
 14. 게임 완성( 게임 데이터 저장 로드, 전투 시스템 설계, 타이틀 화면, 메뉴 결과 UI 처리 )
  
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+Lee Deuk-woo's Unreal C++ Game Development Standard
+
+Following the book above, imitating it directly and currently copying it for the second time
+
+Learning Content
+
+1. The design of the actor ( Mesh Component, Light Component, Transfrom, Rotation )
+2. The production of a moving actor.
+3. Gameplay Framework
+4. The fabrication and manipulation of the phone.
+5. Character creation and control
+6. Design of animation systems (anime retarget, anime blue print, state machine)
+7. Using animation systems (animated montage, Deligate, an animated Notify)
+8. Collision Settings and Damage Forwarding (Collusion Settings, Trace Channels, Damage Processing)
+9. Item Box and Weapon Production
+10. Game Data and UI Widgets
+11. AI Controller and Non-Heavy Tree
+12. Setting up a project and creating infinite maps
+13. Gameplay production (character state, player data linked to UI, game data management)
+14. Game complete (load game data, design battle system, title screen, menu result UI processing)
