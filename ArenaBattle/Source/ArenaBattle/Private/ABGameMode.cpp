@@ -16,7 +16,7 @@ AABGameMode::AABGameMode()
 	PlayerControllerClass = AABPlayerController::StaticClass();	
 	PlayerStateClass = AABPlayerState::StaticClass();
 	GameStateClass = AABGameStateBase::StaticClass();
-	ScoreToClear = 2;
+	ScoreToClear = 20;
 	/*
 	static ConstructorHelpers::FClassFinder<APawn> BP_PAWN_C(TEXT("/Game/ThirdPersonCPP/Blueprints/ThirdPersonCharacter"));
 	if (BP_PAWN_C.Succeeded())
@@ -54,6 +54,25 @@ void AABGameMode::AddScore(AABPlayerController* ScoredPlayer)
 	}
 
 	ABGameState->AddGameScore();
+
+	if (GetScore() >= ScoreToClear)
+	{
+		ABGameState->SetGameCleared();
+
+		for (FConstPawnIterator iter = GetWorld()->GetPawnIterator(); iter; iter++)
+		{
+			(*iter)->TurnOff();
+		}
+
+		for (FConstPlayerControllerIterator iter = GetWorld()->GetPlayerControllerIterator(); iter; ++iter)
+		{
+			const auto ABPlayerController = Cast<AABPlayerController>(iter->Get());
+			if (nullptr != ABPlayerController)
+			{
+				ABPlayerController->ShowResultUI();
+			}
+		}
+	}
 }
 
 int32 AABGameMode::GetScore() const
