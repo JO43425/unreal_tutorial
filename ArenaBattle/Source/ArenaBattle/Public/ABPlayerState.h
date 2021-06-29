@@ -19,12 +19,17 @@ class ARENABATTLE_API AABPlayerState : public APlayerState
 public:
 	AABPlayerState();
 
+	FString SaveSlotName;
 	int32 GetGameScore() const;
 	int32 GetCharacterLevel() const;
 	float GetExpRatio() const;
+	int32 GetCharacterIndex() const;
+	int32 GetGameHighScore() const;
+
 	bool AddExp(int32 IncomeExp);
 	void AddGameScore();	
 	void InitPlayerData();
+	void SavePlayerData();
 
 	FOnPlayerStateChangedDelegate OnPlayerStateChanged;
 
@@ -37,6 +42,12 @@ protected:
 
 	UPROPERTY(Transient)
 		int32 Exp;
+
+	UPROPERTY(Transient)
+		int32 CharacterIndex;
+
+	UPROPERTY(Transient)
+		int32 GameHighScore;
 
 private:
 	void SetCharacterLevel(int32 NewCharacterLevel);
