@@ -17,14 +17,25 @@ class ARENABATTLE_API AABPlayerController : public APlayerController
 	
 	
 public:
+	AABPlayerController();
+
 	virtual void PostInitializeComponents() override;
 	virtual void Possess(APawn* aPawn) override;
 
+	class UABHudWidget* GetHUDWidget() const;
+	void NPCKill(class AABCharacter* KilledNpc) const;
+	void AddGameScore() const;
 protected:
 	virtual void SetupInputComponent() override;
 	virtual void BeginPlay() override;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = UI)
+		TSubclassOf<class UABHudWidget> HUDWidgetClass;
 private:
 	void LeftRight(float NewAxisValue);
 	
+	UPROPERTY()
+		class UABHudWidget* HUDWidget;
+	UPROPERTY()
+		class AABPlayerState* ABPlayerState;
 };
